@@ -1,12 +1,18 @@
 {
-    "name": "iconv-lite",
-    "description": "Convert character encodings in pure javascript.",
+    "name": "pika-iconv-lite",
+    "description": "An ES module fork of iconv-lite",
     "version": "0.4.17",
     "license": "MIT",
-    
-    "keywords": ["iconv", "convert", "charset", "icu"],
-    "author": "Alexander Shtuchkin <ashtuchkin@gmail.com>",
+    "keywords": [
+        "iconv",
+        "convert",
+        "charset",
+        "icu",
+        "pika-ready"
+    ],
+    "author": "Fred K. Schott",
     "contributors": [
+        "Alexander Shtuchkin <ashtuchkin@gmail.com>",
         "Jinwu Zhan (https://github.com/jenkinv)",
         "Adamansky Anton (https://github.com/adamansky)",
         "George Stagas (https://github.com/stagas)",
@@ -20,26 +26,21 @@
         "Mithgol (https://github.com/Mithgol)",
         "Nazar Leush (https://github.com/nleush)"
     ],
-    
     "main": "./lib/index.js",
-    "typings": "./lib/index.d.ts",
-    "homepage": "https://github.com/ashtuchkin/iconv-lite",
-    "bugs": "https://github.com/ashtuchkin/iconv-lite/issues",
+    "module": "./lib/index.js",
+    "homepage": "https://github.com/FredKSchott/pika-iconv-lite",
+    "bugs": "https://github.com/FredKSchott/pika-iconv-lite/issues",
     "repository": {
         "type": "git",
-        "url": "git://github.com/ashtuchkin/iconv-lite.git"
+        "url": "git://github.com/FredKSchott/pika-iconv-lite.git"
     },
     "engines": {
-        "node": ">=0.10.0"
+        "node": ">=8.0.0"
     },
     "scripts": {
-      "coverage": "istanbul cover _mocha -- --grep .",
-      "coverage-open": "open coverage/lcov-report/index.html",
-      "test": "mocha --reporter spec --grep ."
-    },
-    "browser": {
-        "./extend-node": false,
-        "./streams": false
+        "coverage": "istanbul cover _mocha -- --grep .",
+        "coverage-open": "open coverage/lcov-report/index.html",
+        "test": "mocha --reporter spec --grep ."
     },
     "devDependencies": {
         "mocha": "*",

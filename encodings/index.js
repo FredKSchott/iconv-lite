@@ -2,21 +2,23 @@
 
 // Update this array if you add/rename/remove files in this directory.
 // We support Browserify by skipping automatic module discovery and requiring modules directly.
-var modules = [
-    require("./internal"),
-    require("./utf16"),
-    require("./utf7"),
-    require("./sbcs-codec"),
-    require("./sbcs-data"),
-    require("./sbcs-data-generated"),
-    require("./dbcs-codec"),
-    require("./dbcs-data"),
-];
+import internal from "./internal";
+import utf16 from "./utf16";
+import utf7 from "./utf7";
+import sbcsCodec from "./sbcs-codec";
+import sbcsData from "./sbcs-data";
+import sbcsDataGenerated from "./sbcs-data-generated";
+import dbcsCodec from "./dbcs-codec";
+import dbcsData from "./dbcs-data";
 
-// Put all encoding/alias/codec definitions to single object and export it. 
-for (var i = 0; i < modules.length; i++) {
-    var module = modules[i];
-    for (var enc in module)
-        if (Object.prototype.hasOwnProperty.call(module, enc))
-            exports[enc] = module[enc];
-}
+export default Object.assign(
+    {},
+    internal,
+    utf16,
+    utf7,
+    sbcsCodec,
+    sbcsData,
+    sbcsDataGenerated,
+    dbcsCodec,
+    dbcsData
+);

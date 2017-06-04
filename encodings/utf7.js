@@ -1,9 +1,10 @@
 "use strict";
-var Buffer = require("buffer").Buffer;
+import {Buffer} from "buffer";
 
 // UTF-7 codec, according to https://tools.ietf.org/html/rfc2152
 // See also below a UTF-7-IMAP codec, according to http://tools.ietf.org/html/rfc3501#section-5.1.3
-
+const exports = {};
+export default exports;
 exports.utf7 = Utf7Codec;
 exports.unicode11utf7 = 'utf7'; // Alias UNICODE-1-1-UTF-7
 function Utf7Codec(codecOptions, iconv) {
@@ -27,8 +28,8 @@ Utf7Encoder.prototype.write = function(str) {
     // Naive implementation.
     // Non-direct chars are encoded as "+<base64>-"; single "+" char is encoded as "+-".
     return new Buffer(str.replace(nonDirectChars, function(chunk) {
-        return "+" + (chunk === '+' ? '' : 
-            this.iconv.encode(chunk, 'utf16-be').toString('base64').replace(/=+$/, '')) 
+        return "+" + (chunk === '+' ? '' :
+            this.iconv.encode(chunk, 'utf16-be').toString('base64').replace(/=+$/, ''))
             + "-";
     }.bind(this)));
 }
@@ -50,7 +51,7 @@ var base64Chars = [];
 for (var i = 0; i < 256; i++)
     base64Chars[i] = base64Regex.test(String.fromCharCode(i));
 
-var plusChar = '+'.charCodeAt(0), 
+var plusChar = '+'.charCodeAt(0),
     minusChar = '-'.charCodeAt(0),
     andChar = '&'.charCodeAt(0);
 

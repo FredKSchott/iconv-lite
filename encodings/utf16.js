@@ -1,10 +1,11 @@
 "use strict";
-var Buffer = require("buffer").Buffer;
+import {Buffer} from "buffer";
 
 // Note: UTF16-LE (or UCS2) codec is Node.js native. See encodings/internal.js
 
 // == UTF16-BE codec. ==========================================================
-
+const exports = {};
+export default exports;
 exports.utf16be = Utf16BECodec;
 function Utf16BECodec() {
 }
@@ -115,7 +116,7 @@ Utf16Decoder.prototype.write = function(buf) {
         // Codec is not chosen yet. Accumulate initial bytes.
         this.initialBytes.push(buf);
         this.initialBytesLen += buf.length;
-        
+
         if (this.initialBytesLen < 16) // We need more bytes to use space heuristic (see below)
             return '';
 

@@ -1,9 +1,9 @@
 "use strict";
-var Buffer = require("buffer").Buffer;
+import {Buffer} from "buffer";
 
 // Export Node.js internal encodings.
 
-module.exports = {
+export default {
     // Encodings
     utf8:   { type: "_internal", bomAware: true},
     cesu8:  { type: "_internal", bomAware: true},
@@ -48,7 +48,7 @@ InternalCodec.prototype.decoder = InternalDecoder;
 //------------------------------------------------------------------------------
 
 // We use node.js internal decoder. Its signature is the same as ours.
-var StringDecoder = require('string_decoder').StringDecoder;
+import {StringDecoder} from "string_decoder";
 
 if (!StringDecoder.prototype.end) // Node v0.8 doesn't have this method.
     StringDecoder.prototype.end = function() {};
@@ -138,7 +138,7 @@ function InternalDecoderCesu8(options, codec) {
 }
 
 InternalDecoderCesu8.prototype.write = function(buf) {
-    var acc = this.acc, contBytes = this.contBytes, accBytes = this.accBytes, 
+    var acc = this.acc, contBytes = this.contBytes, accBytes = this.accBytes,
         res = '';
     for (var i = 0; i < buf.length; i++) {
         var curByte = buf[i];
