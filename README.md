@@ -1,3 +1,5 @@
+> `pika-iconv-lite` is an ES6 module fork of `iconv-lite`.  It matches the original described below, except that it is loaded via module `import` instead of Node's commonjs `require()`. See the updated code snippets in the README below for the new import syntax.
+
 ## Pure JS character encoding conversion [![Build Status](https://travis-ci.org/ashtuchkin/iconv-lite.svg?branch=master)](https://travis-ci.org/ashtuchkin/iconv-lite)
 
  * Doesn't need native code compilation. Works on Windows and in sandboxed environments like [Cloud9](http://c9.io).
@@ -17,16 +19,16 @@
 ## Usage
 ### Basic API
 ```javascript
-var iconv = require('iconv-lite');
+import iconv from 'pika-iconv-lite';
 
 // Convert from an encoded buffer to js string.
-str = iconv.decode(new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]), 'win1251');
+console.log(iconv.decode(new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]), 'win1251'));
 
 // Convert from js string to an encoded buffer.
-buf = iconv.encode("Sample input string", 'win1251');
+console.log(iconv.encode("Sample input string", 'win1251'));
 
 // Check if encoding is supported
-iconv.encodingExists("us-ascii")
+console.log(iconv.encodingExists("us-ascii"));
 ```
 
 ### Streaming API (Node v0.10+)
@@ -79,13 +81,6 @@ http.createServer(function(req, res) {
 });
 
 fs.createReadStream("file.txt", "shift_jis");
-
-// External modules are also supported (if they use Node primitives, which they probably do).
-request = require('request');
-request({
-    url: "http://github.com/", 
-    encoding: "cp932"
-});
 
 // To remove extensions
 iconv.undoExtendNodeEncodings();
