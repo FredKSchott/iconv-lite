@@ -8,7 +8,7 @@
         "convert",
         "charset",
         "icu",
-        "pika-ready"
+        "pika-package"
     ],
     "author": "Fred K. Schott",
     "contributors": [
@@ -26,7 +26,6 @@
         "Mithgol (https://github.com/Mithgol)",
         "Nazar Leush (https://github.com/nleush)"
     ],
-    "main": "./lib/index.js",
     "module": "./lib/index.js",
     "homepage": "https://github.com/FredKSchott/pika-iconv-lite",
     "bugs": "https://github.com/FredKSchott/pika-iconv-lite/issues",
